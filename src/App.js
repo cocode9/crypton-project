@@ -1,7 +1,7 @@
-import CoinList from "./components/molecules/CoinList";
+import PriceConverter from "./components/organisms/PriceConverter";
 
 function App() {
-  return <CoinList />;
+  return <PriceConverter />;
 }
 
 export default App;

@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import CoinItem from "../atoms/CoinItem";
 
-function CoinList() {
-  const [bitcoin, setBitcoin] = useState();
-  const [ethereum, setEthereum] = useState();
+function CoinList({ bitcoin, setBitcoin, ethereum, setEthereum }) {
   const [flag, setFlag] = useState(0);
 
   useEffect(() => {

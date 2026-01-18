@@ -7,3 +7,26 @@ ul {
   color: white;
   text-align: center;
 }
+
+input {
+  margin: 0 auto;
+}
+
+.price-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-form input {
+  border: 1px solid #cccccc;
+  width: 25%;
+  font-size: 40px;
+  text-align: center;
+}
+
+.price-form label {
+  width: 5%;
+  font-size: 40px;
+  font-weight: bold;
+}

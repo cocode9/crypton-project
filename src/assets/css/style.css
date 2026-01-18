@@ -1,32 +1,238 @@
 * {
-  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-ul {
-  background-color: green;
-  color: white;
-  text-align: center;
-}
-
-input {
-  margin: 0 auto;
-}
-
-.price-form {
+/* Body */
+body {
+  background: linear-gradient(135deg, #ff58b3, #ff6f91, #4facfe);
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  transition: background 0.5s ease-in-out;
+}
+
+/* Main container */
+.price-container {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: 50px;
+  width: 500px;
+  max-width: 100%;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for container */
+.price-container:hover {
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.6);
+  transform: translateY(-10px);
+}
+
+/* Coin list styling */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Coin Item styling */
+h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h1:first-child {
+  color: #ffeb3b;
+  font-size: 24px;
+  text-transform: capitalize;
+}
+
+h1:last-child {
+  font-size: 28px;
+  font-weight: bold;
+  color: #00ff99;
+  text-shadow: 0 0 15px #00ff99, 0 0 25px #00ff99, 0 0 35px #00ff99;
+  letter-spacing: 1.8px;
+  text-align: right;
+}
+
+/* Input styling */
+.price-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
   align-items: center;
 }
 
 .price-form input {
-  border: 1px solid #cccccc;
-  width: 25%;
-  font-size: 40px;
+  width: 100%;
+  padding: 18px 22px;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  color: #2e2e2e; /* Text color for visibility */
+  background: rgba(255, 255, 255, 0.75); /* Lighter background for contrast */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: 0.4s ease;
+}
+
+.price-form input:focus {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+  transform: scale(1.07);
+}
+
+/* Disabled input styling */
+.price-form input:disabled {
+  background: rgba(255, 255, 255, 0.3);
+  color: #bbb;
+}
+
+/* Labels */
+.price-form label {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffd700;
+  text-align: center;
+  letter-spacing: 1.5px;
+  transition: 0.3s ease;
+}
+
+/* Hover effect on labels */
+.price-form label:hover {
+  color: #00ff99;
+  cursor: pointer;
+}
+
+/* Glow effect on inputs */
+.price-form input:focus {
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.9);
+  border: 2px solid #00ff99;
+  transform: scale(1.1);
+}
+
+/* Coin List Transition Animation */
+.price-container li {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title fade-in animation */
+.price-container {
+  animation: fadeInContainer 1s ease-out;
+}
+
+@keyframes fadeInContainer {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.price-form input:disabled {
+  background: rgba(255, 255, 255, 0.3); /* Slightly darker background */
+  color: #555; /* Darker text for better visibility */
+  cursor: not-allowed; /* Show a "not-allowed" cursor */
+  border: 1px solid #ddd; /* Lighter border to distinguish it */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 16px 18px;
+  border-radius: 14px;
+  font-size: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect on disabled input (keep it consistent, no hover for disabled) */
+.price-form input:disabled:hover {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+}
+
+/* Active state for enabled inputs */
+.price-form input:enabled {
+  background: rgba(255, 255, 255, 0.85);
+  color: #333; /* Dark text for readable input */
+  border: 2px solid #00ff99; /* Lighter green border on active */
   text-align: center;
 }
 
-.price-form label {
-  width: 5%;
-  font-size: 40px;
-  font-weight: bold;
+/* Focused enabled input */
+.price-form input:enabled:focus {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.9);
+  border-color: #00ff99; /* Green glow effect */
+}
+
+/* Full-screen overlay for loading */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Spinner */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

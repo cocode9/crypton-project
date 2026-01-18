@@ -12,9 +12,9 @@ function Form({ bitcoin, ethereum }) {
       <input onChange={(e) => convert(e.target.value)} />
       <label>$</label>
       <input value={Number((price / bitcoin).toFixed(7)) || 0} disabled />
-      <label>B</label>
+      <label>BTC</label>
       <input value={Number((price / ethereum).toFixed(7)) || 0} disabled />
-      <label>E</label>
+      <label>ETH</label>
     </div>
   );
 }

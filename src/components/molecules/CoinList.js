@@ -1,31 +1,35 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useCallback, useMemo } from "react";
 import axios from "axios";
 import CoinItem from "../atoms/CoinItem";
 
 function CoinList({ bitcoin, setBitcoin, ethereum, setEthereum }) {
-  const [flag, setFlag] = useState(0);
+  const bit = useMemo(() => bitcoin, [bitcoin]);
+  const eth = useMemo(() => ethereum, [ethereum]);
+
+  const fetchData = useCallback(() => {
+    axios
+      .get(
+        "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd"
+      )
+      .then((res) => {
+        setBitcoin(res.data["bitcoin"]["usd"]);
+        setEthereum(res.data["ethereum"]["usd"]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
-    if (!flag) {
-      setFlag(1);
-      axios
-        .get(
-          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd"
-        )
-        .then((res) => {
-          setBitcoin(res.data["bitcoin"]["usd"]);
-          setEthereum(res.data["ethereum"]["usd"]);
-        })
-        .catch((err) => console.log(err));
-    }
+    fetchData();
+    const refresh = setInterval(fetchData, 3000);
+    return () => clearInterval(refresh);
   }, []);
   return (
     <ul>
-      <li key={bitcoin}>
-        <CoinItem what="bitcoin" how={bitcoin} />
+      <li key={bit}>
+        <CoinItem what="bitcoin" how={bit} />
       </li>
-      <li key={ethereum}>
-        <CoinItem what="ethereun" how={ethereum} />
+      <li key={eth}>
+        <CoinItem what="ethereun" how={eth} />
       </li>
     </ul>
   );
